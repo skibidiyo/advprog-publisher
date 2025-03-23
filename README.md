@@ -90,5 +90,17 @@ This is the place for you to write reflections:
     The Singleton pattern gives you a single, global instance but doesnt make data thread-safe. In Rust, thread safety is important, especially when multiple threads access shared data like SUBSCRIBERS. DashMap is a thread-safe map that allows safe concurrent access without manual locking. Even with a Singleton, you would still need DashMap or another thread-safe structure. So, using DashMap is still necessary in this case.
 
 #### Reflection Publisher-2
+1) In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+    Separating Service and Repository from Model helps keep the code clean and organized. Each part has its own job: models hold data, services handle logic, and repositories deal with the database. This makes the code easier to understand, test, and change. It also helps our project grow without becoming messy.
+
+2) What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
+    If we only use the Model, each model would have to do everything : handle data, logic, and database access. This makes the code messy and harder to understand. The models would depend too much on each other, and small changes could break many things. Separating logic into services and repositories keeps things clean and easier to manage.
+
+3) Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+    Yes, Ive used Postman to test my API endpoints, which helps me quickly check if they work as expected. Its a useful tool for both solo and group projects, especially when working with APIs.
+
 
 #### Reflection Publisher-3
