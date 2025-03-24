@@ -104,3 +104,16 @@ This is the place for you to write reflections:
 
 
 #### Reflection Publisher-3
+1) Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+    The code uses the Push Model. The publisher constructs a Notification and pushes all relevant data directly to each subscriber via their update method. Subscribers do not request data, they simply receive what the publisher sends.
+
+2) What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+    - Advantage : With the Pull Model, observers have the flexibility to decide when to check for updates. This is useful in scenarios where certain observers may be inactive or only run while the user is actively using the application. Instead of receiving updates instantly, they can fetch them when the app resumes, avoiding missed notifications. It also helps reduce processing load and network traffic, since not all observers are notified simultaneously on every change. This can improve system scalability by distributing the update responsibility to each observer, instead of overloading the publisher with update tasks.
+
+    - Disadvantage : We would have to ensure we choose appropriate intervals or trigger events for when the observer performs a pull. If the interval is too short, it can result in frequent and unnecessary requests for updates, even when nothing has changed, causing extra bandwidth usage and increased server load. If the interval is too long or a change happens right after a pull, the observer might remain out of sync with the server for a while, potentially missing important updates.
+
+3) Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+    If multi-threading is not used, the notification process will run sequentially, meaning each subscriber is updated one at a time. This can lead to delays if any subscriber takes too long to respond, blocking the rest of the updates. As the number of subscribers grows, the overall performance and responsiveness of the system will degrade. Using multi-threading avoids these issues by allowing each subscriber to be notified in parallel, improving speed and scalability.
